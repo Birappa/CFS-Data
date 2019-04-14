@@ -1,12 +1,14 @@
 package com.capgemini.model;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+
+import org.springframework.data.annotation.Id;
+
 
 @Entity
 public class Employee {
 	
 	@Id
-	private String empId;
+	private long empId;
 	
 	private String fullName;
 	private String email;
@@ -15,7 +17,7 @@ public class Employee {
 	private String password;
 	
 
-	public Employee(String empId, String fullName, String email, long contact, String role, String password) {
+	public Employee(long empId, String fullName, String email, long contact, String role, String password) {
 		super();
 		this.empId = empId;
 		this.fullName = fullName;
@@ -41,11 +43,11 @@ public class Employee {
 		this.password = password;
 	}
 
-	public String getEmpId() {
+	public long getEmpId() {
 		return empId;
 	}
 
-	public void setEmpId(String empId) {
+	public void setEmpId(long empId) {
 		this.empId = empId;
 	}
 

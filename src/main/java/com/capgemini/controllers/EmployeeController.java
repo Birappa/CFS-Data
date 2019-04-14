@@ -2,9 +2,8 @@ package com.capgemini.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.capgemini.exception.AlreadyEmployeeExistException;
 import com.capgemini.exception.EmployeeNotExistException;
 import com.capgemini.model.Employee;
+import com.capgemini.model.Response;
 
 @RestController
 public class EmployeeController {
@@ -23,22 +23,20 @@ public class EmployeeController {
 
 	
 	//returns employee object from employee collection that matches the id
-	@PostMapping("/users/{id}")
-	public ResponseEntity<Employee> getUserById(@PathVariable long empId) {
+	@GetMapping("/employee/{empId}")
+	public Response<Employee> getEmployeeById(@PathVariable long empId) {
 
 		Employee employee=mongoTemplate.findById(empId, Employee.class);
 		if(employee==null) {
 			throw new EmployeeNotExistException("Employee Not Exist");
 		}
 		
-		HttpHeaders responseHeaders = new HttpHeaders();
-		responseHeaders.set("message","Success");
-		return new ResponseEntity<>(employee, responseHeaders, HttpStatus.OK);
+		return new Response<Employee>(employee, HttpStatus.OK.value(), "success");
 	}
 
 	//save the provided employee object in employee collection and returns same object back
 	@PostMapping("/employee")
-	public ResponseEntity<Employee> saveEmployee(@RequestBody Employee newEmployee) {
+	public Response<Employee> saveEmployee(@RequestBody Employee newEmployee) {
 		
 		Employee employee=mongoTemplate.findById(newEmployee.getEmpId(), Employee.class);
 		
@@ -47,9 +45,7 @@ public class EmployeeController {
 		}
 		
 		employee=mongoTemplate.save(newEmployee);
-		HttpHeaders responseHeaders = new HttpHeaders();
-		responseHeaders.set("message","Success");
-		return new ResponseEntity<>(employee, responseHeaders, HttpStatus.OK);
+		return new Response<Employee>(employee, HttpStatus.OK.value(), "success");
 		
 	}
 	

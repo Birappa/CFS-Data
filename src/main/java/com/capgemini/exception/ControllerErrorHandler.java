@@ -1,41 +1,50 @@
 package com.capgemini.exception;
 
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.capgemini.model.Employee;
+import com.capgemini.model.Feedback;
+import com.capgemini.model.Response;
 
 @ControllerAdvice
 public class ControllerErrorHandler {
 
 	@ExceptionHandler(EmployeeNotExistException.class)
-	public ResponseEntity<Employee> handleUserNotExistException(EmployeeNotExistException exception) {
+	public Response<Employee> handleEmployeeNotExistException(EmployeeNotExistException exception) {
 
-		HttpHeaders responseHeaders = new HttpHeaders();
-		responseHeaders.set("message", exception.getMessage());
-		Employee employee=null;
-		return new ResponseEntity<>(employee, responseHeaders, HttpStatus.NOT_FOUND);
+		return new Response<Employee>(null, HttpStatus.NOT_FOUND.value(), exception.getMessage());
 	}
 
 	@ExceptionHandler(AlreadyEmployeeExistException.class)
-	public ResponseEntity<Employee> handleAlreadyUserExistException(AlreadyEmployeeExistException exception) {
+	public Response<Employee> handleAlreadyEmployeeExistException(AlreadyEmployeeExistException exception) {
 
-		HttpHeaders responseHeaders = new HttpHeaders();
-		responseHeaders.set("message", exception.getMessage());
-		Employee employee=null;
-		return new ResponseEntity<>(employee, responseHeaders, HttpStatus.BAD_REQUEST);
+		return new Response<Employee>(null, HttpStatus.BAD_REQUEST.value(), exception.getMessage());
+	}
+	
+	@ExceptionHandler(SequenceException.class)
+	public Response<Feedback> handleSequenceException(SequenceException exception){
+		
+		return new Response<Feedback>(null, HttpStatus.BAD_REQUEST.value(), exception.getMessage());
+	}
+	
+	@ExceptionHandler(FeedbackNotFoundException.class)
+	public Response<Feedback> handleFeedbackNotFoundException(FeedbackNotFoundException exception){
+		
+		return new Response<Feedback>(null, HttpStatus.NOT_FOUND.value(), exception.getMessage());
+	}
+	
+	@ExceptionHandler(FeedbackDatabaseException.class)
+	public Response<Feedback> handleFeedbackDatabaseException(FeedbackDatabaseException exception){
+		
+		return new Response<Feedback>(null, HttpStatus.BAD_REQUEST.value(), exception.getMessage());
 	}
 
 	@ExceptionHandler(Exception.class)
-	public ResponseEntity<Employee> handleAllExceptions(Exception exception) {
+	public Response<Employee> handleAllExceptions(Exception exception) {
 
-		HttpHeaders responseHeaders = new HttpHeaders();
-		responseHeaders.set("message", exception.getMessage());
-		Employee employee=null;
-		return new ResponseEntity<>(employee, responseHeaders, HttpStatus.INTERNAL_SERVER_ERROR);
+		return new Response<Employee>(null, HttpStatus.INTERNAL_SERVER_ERROR.value(), exception.getMessage());
 
 	}
 }
