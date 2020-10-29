@@ -1,4 +1,4 @@
-package com.capgemini.model;
+package com.cfs.model;
 
 public class Response<T> { 
 	

@@ -1,4 +1,4 @@
-package com.capgemini.controllers;
+package com.cfs.controllers;
 
 import java.util.List;
 
@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.capgemini.exception.FeedbackDatabaseException;
-import com.capgemini.exception.FeedbackNotFoundException;
-import com.capgemini.model.Feedback;
-import com.capgemini.model.Response;
-import com.capgemini.services.SequenceService;
+import com.cfs.exception.FeedbackDatabaseException;
+import com.cfs.exception.FeedbackNotFoundException;
+import com.cfs.model.Feedback;
+import com.cfs.model.Response;
+import com.cfs.services.SequenceService;
 
 
 @RestController

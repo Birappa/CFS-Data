@@ -1,4 +1,4 @@
-package com.capgemini.controllers;
+package com.cfs.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.capgemini.exception.AlreadyEmployeeExistException;
-import com.capgemini.exception.EmployeeNotExistException;
-import com.capgemini.model.Employee;
-import com.capgemini.model.Response;
+import com.cfs.exception.AlreadyEmployeeExistException;
+import com.cfs.exception.EmployeeNotExistException;
+import com.cfs.model.Employee;
+import com.cfs.model.Response;
 
 @RestController
 public class EmployeeController {

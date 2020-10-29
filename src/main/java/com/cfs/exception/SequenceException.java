@@ -1,4 +1,4 @@
-package com.capgemini.exception;
+package com.cfs.exception;
 
 public class SequenceException extends RuntimeException {
 

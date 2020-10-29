@@ -1,4 +1,4 @@
-package com.capgemini.model;
+package com.cfs.model;
 
 import java.util.Date;
 import java.util.List;

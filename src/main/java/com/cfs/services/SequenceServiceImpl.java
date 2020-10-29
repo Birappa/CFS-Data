@@ -1,4 +1,4 @@
-package com.capgemini.services;
+package com.cfs.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
@@ -8,8 +8,8 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
-import com.capgemini.exception.SequenceException;
-import com.capgemini.model.SequenceId;
+import com.cfs.exception.SequenceException;
+import com.cfs.model.SequenceId;
 
 @Service("SequenceService")
 public class SequenceServiceImpl implements SequenceService {

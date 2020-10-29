@@ -1,4 +1,4 @@
-package com.capgemini;
+package com.cfs;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

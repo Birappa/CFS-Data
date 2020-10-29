@@ -1,4 +1,4 @@
-package com.capgemini.model;
+package com.cfs.model;
 import javax.persistence.Entity;
 
 import org.springframework.data.annotation.Id;

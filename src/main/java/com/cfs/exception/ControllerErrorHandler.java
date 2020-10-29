@@ -1,12 +1,12 @@
-package com.capgemini.exception;
+package com.cfs.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.capgemini.model.Employee;
-import com.capgemini.model.Feedback;
-import com.capgemini.model.Response;
+import com.cfs.model.Employee;
+import com.cfs.model.Feedback;
+import com.cfs.model.Response;
 
 @ControllerAdvice
 public class ControllerErrorHandler {

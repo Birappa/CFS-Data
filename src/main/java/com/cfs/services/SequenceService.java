@@ -1,6 +1,6 @@
-package com.capgemini.services;
+package com.cfs.services;
 
-import com.capgemini.exception.SequenceException;
+import com.cfs.exception.SequenceException;
 
 public interface SequenceService {
 

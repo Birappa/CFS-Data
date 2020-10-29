@@ -1,4 +1,4 @@
-package com.capgemini.model;
+package com.cfs.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
